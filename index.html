@@ -1,1 +1,118 @@
-hello
+<html>
+<head>
+<style>
+body {
+  text-align: center;
+  background: gray;
+}
+
+.card__container {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-perspective: 1400px;
+          perspective: 1400px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+@media (min-width: 768px) {
+  .open .card__container {
+    -webkit-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+  }
+}
+
+.card {
+  max-width: 400px;
+  max-height: 600px;
+  width: 80vw;
+  height: 120vw;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(30deg);
+          transform: rotateX(30deg);
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.open .card {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+.card__panel {
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform-style: preserve-3D;
+          transform-style: preserve-3D;
+  -webkit-transform: rotate3d(0, 1, 0, 0deg);
+          transform: rotate3d(0, 1, 0, 0deg);
+}
+.card__panel--front {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background: #6288e6;
+  z-index: 1;
+}
+.open .card__panel--front {
+  -webkit-transform: rotate3d(0, 1, 0, -170deg);
+          transform: rotate3d(0, 1, 0, -170deg);
+}
+.card__panel--inside-left {
+  background: #fff;
+  z-index: 0;
+}
+.open .card__panel--inside-left {
+  -webkit-transform: rotate3d(0, 1, 0, -170deg);
+          transform: rotate3d(0, 1, 0, -170deg);
+}
+.card__panel--inside-right {
+  border-left: none;
+  background: #fff;
+  z-index: -1;
+}
+
+</style>
+</head>
+<body>
+
+<p>Click card to open</p>
+
+<div class="card__container js-card-opener">
+  <div class="card">
+    <div class="card__panel card__panel--front">      
+      <img width=400 height=600 src="front-pic.jpg"/>
+    </div>
+    <div class="card__panel card__panel--inside-left">
+    </div>
+    <div class="card__panel card__panel--inside-right">
+      <img width=400 height=600 src="front-pic.jpg"/>
+      <!-- <p>Happy everything!</p>
+      <p>Your friend, Tammy</p> -->
+    </div>
+  </div>
+
+</div>
+
+<script>
+const openBtn = document.querySelector(".js-card-opener");
+
+openBtn.onclick = function () {
+  document.body.classList.toggle("open");
+};
+
+</script>
+</body>
