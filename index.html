@@ -3,7 +3,21 @@
 <style>
 body {
   text-align: center;
-  background: gray;
+  /*background: gray;*/
+  background-image: url('background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+p.heading {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 40px;
+}
+
+p.message {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 25px;
 }
 
 .card__container {
@@ -89,7 +103,13 @@ body {
 </head>
 <body>
 
-<p>Click card to open</p>
+<p class="heading">Click the card to open!</p>
+<p class="message">Turn your sound on! Audio recorded two years ago!</p>
+<audio id="audio"
+        src="happy-birthday-audio.m4a">
+            Your browser does not support the
+            <code>audio</code> element.
+</audio>
 
 <div class="card__container js-card-opener">
   <div class="card">
@@ -97,11 +117,10 @@ body {
       <img width=400 height=600 src="front-pic.jpg"/>
     </div>
     <div class="card__panel card__panel--inside-left">
+      <img width=400 height=600 src="inside-left.jpg"/>
     </div>
     <div class="card__panel card__panel--inside-right">
-      <img width=400 height=600 src="front-pic.jpg"/>
-      <!-- <p>Happy everything!</p>
-      <p>Your friend, Tammy</p> -->
+      <img width=400 height=600 src="inside-right.jpg"/>
     </div>
   </div>
 
@@ -110,8 +129,17 @@ body {
 <script>
 const openBtn = document.querySelector(".js-card-opener");
 
+var isOpen = false;
 openBtn.onclick = function () {
   document.body.classList.toggle("open");
+  isOpen = !isOpen;
+  const audio = document.querySelector("#audio");
+  if (isOpen) { 
+    audio.play();
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+  }
 };
 
 </script>
