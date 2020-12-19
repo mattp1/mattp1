@@ -89,6 +89,13 @@ p.message {
   background: #fff;
   z-index: 0;
 }
+
+/* Flip the inside top content back the right way around */
+.card__panel--inside-top * {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
 .open .card__panel--inside-top {
   -webkit-transform: rotate3d(1, 0, 0, 170deg);
           transform: rotate3d(1, 0, 0, 170deg);
