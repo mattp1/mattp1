@@ -34,16 +34,16 @@ p.message {
 }
 @media (min-width: 768px) {
   .open .card__container {
-    -webkit-transform: translate(0%, -50%);
-            transform: translate(0%, -50%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
 }
 
 .card {
-  max-width: 400px;
-  max-height: 600px;
-  width: 80vw;
-  height: 120vw;
+  max-width: 600px;
+  max-height: 400px;
+  width: 120vw;
+  height: 80vw;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transform: rotateX(30deg);
@@ -68,12 +68,12 @@ p.message {
   transition: all 1s ease;
   -webkit-backface-visibility: visible;
           backface-visibility: visible;
-  -webkit-transform-origin: left;
-          transform-origin: left;
+  -webkit-transform-origin: top;
+          transform-origin: top;
   -webkit-transform-style: preserve-3D;
           transform-style: preserve-3D;
-  -webkit-transform: rotate3d(0, 1, 0, 0deg);
-          transform: rotate3d(0, 1, 0, 0deg);
+  -webkit-transform: rotate3d(1, 0, 0, 0deg);
+          transform: rotate3d(1, 0, 0, 0deg);
 }
 .card__panel--front {
   -webkit-backface-visibility: hidden;
@@ -82,18 +82,18 @@ p.message {
   z-index: 1;
 }
 .open .card__panel--front {
-  -webkit-transform: rotate3d(0, 1, 0, -170deg);
-          transform: rotate3d(0, 1, 0, -170deg);
+  -webkit-transform: rotate3d(1, 0, 0, 170deg);
+          transform: rotate3d(1, 0, 0, 170deg);
 }
-.card__panel--inside-left {
+.card__panel--inside-top {
   background: #fff;
   z-index: 0;
 }
-.open .card__panel--inside-left {
-  -webkit-transform: rotate3d(0, 1, 0, -170deg);
-          transform: rotate3d(0, 1, 0, -170deg);
+.open .card__panel--inside-top {
+  -webkit-transform: rotate3d(1, 0, 0, 170deg);
+          transform: rotate3d(1, 0, 0, 170deg);
 }
-.card__panel--inside-right {
+.card__panel--inside-bottom {
   border-left: none;
   background: #fff;
   z-index: -1;
@@ -210,14 +210,14 @@ p.message {
 
 <div class="card__container js-card-opener">
   <div class="card">
-    <div class="card__panel card__panel--front">      
-      <img width=400 height=600 src="front.jpg"/>
+    <div class="card__panel card__panel--front"> 
+      <img height=100% width=100% src="front.jpg"/>
     </div>
-    <div class="card__panel card__panel--inside-left">
-      <img width=400 height=600 src="inside-left.jpg"/>
+    <div class="card__panel card__panel--inside-top">
+      <img height=100% width=100% src="inside-top.jpg"/>
     </div>
-    <div class="card__panel card__panel--inside-right">
-      <img width=400 height=600 src="inside-right.jpg"/>
+    <div class="card__panel card__panel--inside-bottom">
+      <img height=100% width=100% src="inside-bottom.jpg"/>
     </div>
   </div>
 
